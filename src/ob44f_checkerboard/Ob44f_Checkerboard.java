@@ -22,11 +22,13 @@ public class Ob44f_Checkerboard extends Application {
         
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CheckerboardFXML.fxml"));
         Parent root = loader.load();
-          
+        
+        Startable controller = loader.getController();
         Scene scene = new Scene(root);
         
         stage.setScene(scene);
         stage.show();
+        controller.start(stage);
     }
 
     /**

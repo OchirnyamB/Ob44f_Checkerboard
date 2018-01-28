@@ -11,25 +11,33 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 /**
  *
  * @author ob44f
  */
-public class CheckerboardFXMLController implements Initializable {
+public class CheckerboardFXMLController implements Initializable, Startable {
     
     @FXML
-    private Label label;
+    private AnchorPane anchorPane;
     
-    @FXML
-    private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
-    }
+    private Stage stage;
+//    @FXML
+//    private void handleButtonAction(ActionEvent event) {
+//        System.out.println("You clicked me!");
+//        label.setText("Hello World!");
+//    }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
     }    
+    public void start(Stage stage){
+        this.stage = stage;
+        
+        System.out.println(anchorPane.getWidth());
+    }
     
 }
