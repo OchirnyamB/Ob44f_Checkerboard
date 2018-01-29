@@ -10,12 +10,14 @@ import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
@@ -24,10 +26,17 @@ import javafx.stage.Stage;
  * @author ob44f
  */
 public class CheckerboardFXMLController implements Initializable, Startable {
-    
+
+    @FXML
+    private VBox vBox;
+
+    @FXML
+    private MenuBar menuBar;
+
     @FXML
     private AnchorPane anchorPane;
-    
+//    @FXML
+//    private AnchorPane anchorPane;
 //    @FXML 
 //    private MenuBar gridMenu;
 //    @FXML
@@ -38,65 +47,73 @@ public class CheckerboardFXMLController implements Initializable, Startable {
 //    private MenuItem size3;
 //    @FXML
 //    private MenuItem size4;
-       
-       
+
     private Stage stage;
-    
+
     private int numRows = 8;
     private int numCols = 8;
-    
+
     private double boardWidth;
     private double boardHeight;
     private double rectWidth;
     private double rectHeight;
-    private boolean color = false;
-    private Color lightColor = Color.RED;
-    private Color darkColor = Color.BLACK;
+
+    private boolean defaultColor = true;
     
+    private Color lightColor = Color.SKYBLUE;
+    private Color darkColor = Color.DARKBLUE;
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    public void start(Stage stage){
-        this.stage = stage;
+    }
 
+    @Override
+    public void start(Stage stage) {
+        this.stage = stage;
         ChangeListener<Number> stageSizeListener = (ObservableValue<? extends Number> observable, Number oldValue, final Number newValue) -> {
-            buildBoard();      
+            displayBoard();
         };
         this.stage.widthProperty().addListener(stageSizeListener);
         this.stage.heightProperty().addListener(stageSizeListener);
-        buildBoard();
+        displayBoard();
     }
-    private void buildBoard(){
-        clearBoard();
-        System.out.println("cleared");
-        boardWidth = anchorPane.getWidth();
-        boardHeight = anchorPane.getHeight();
+
+    private void displayBoard() {
+        boardWidth = vBox.getWidth();
+        boardHeight = vBox.getHeight() - menuBar.getHeight();  // height of anchorPane
         Checkerboard board;
-        if(color == false){board = new Checkerboard(numRows, numCols, boardWidth, boardHeight);}
-        else{board = new Checkerboard(numRows, numCols, boardWidth, boardHeight, lightColor, darkColor);}
-        board.build();
-        anchorPane.getChildren().add(board.getBoard());
+        // flag is set to indicate different colored board initializaiton
+        if (defaultColor == true) {
+            board = new Checkerboard(numRows, numCols, boardWidth, boardHeight);
+        } // no color specified instance
+        else {
+            board = new Checkerboard(numRows, numCols, boardWidth, boardHeight, lightColor, darkColor);
+        }  // color specified instance
+        clearBoard();              // clear board or remove current anchorpane when redrawing the different sized board
+        board.build();             // call the public build board function in Checkerboard class 
+        anchorPane = board.getBoard();
+        vBox.getChildren().add(anchorPane);
     }
-    private void clearBoard(){
-        anchorPane.getChildren().clear();
-        anchorPane.getChildren().clear();
-    }
+
     @FXML
     private void handleDefaultColor(ActionEvent event) {
-        color = false;
-        buildBoard();
+        defaultColor = true;
+        displayBoard();
     }
+
     @FXML
     private void handlePurpleColor(ActionEvent event) {
-        color = true;
-        buildBoard();
+        defaultColor = false;
+        displayBoard();
     }
+
     @FXML
     private void handleGridSize(ActionEvent event) {
-          clearBoard();
-//        Checkerboard board = new Checkerboard(numRows, numCols, boardWidth, boardHeight);
-//        board.build();
-//        this.anchorPane.getChildren().add(board.getBoard());
+
+    }
+
+    private void clearBoard() {
+        vBox.getChildren().remove(anchorPane);
     }
 }

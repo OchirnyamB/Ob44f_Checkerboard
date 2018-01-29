@@ -16,16 +16,15 @@ import javafx.stage.Stage;
  * @author ob44f
  */
 public class Ob44f_Checkerboard extends Application {
-    
+
     @Override
     public void start(Stage stage) throws Exception {
-        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("CheckerboardFXML.fxml"));
         Parent root = loader.load();
-        
         Startable controller = loader.getController();
+
         Scene scene = new Scene(root);
-        
+
         stage.setScene(scene);
         stage.show();
         controller.start(stage);
@@ -37,5 +36,5 @@ public class Ob44f_Checkerboard extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

@@ -6,9 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ob44f_checkerboard.CheckerboardFXMLController">
+<VBox fx:id="vBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ob44f_checkerboard.CheckerboardFXMLController">
    <children>
-      <MenuBar>
+      <MenuBar fx:id="menuBar">
         <menus>
           <Menu fx:id="gridMenu" mnemonicParsing="false" onAction="#handleGridSize" text="Grid">
             <items>
@@ -21,11 +21,11 @@
           <Menu mnemonicParsing="false" text="Colors">
             <items>
               <MenuItem mnemonicParsing="false" onAction="#handleDefaultColor" text="Default" />
-                  <MenuItem mnemonicParsing="false" onAction="#handlePurpleColor" text="Purple" />
+                  <MenuItem mnemonicParsing="false" onAction="#handlePurpleColor" text="Blue" />
             </items>
           </Menu>
         </menus>
       </MenuBar>
-      <AnchorPane fx:id="anchorPane" prefHeight="374.0" prefWidth="600.0" VBox.vgrow="ALWAYS" />
+      <AnchorPane fx:id="anchorPane" prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
    </children>
 </VBox>

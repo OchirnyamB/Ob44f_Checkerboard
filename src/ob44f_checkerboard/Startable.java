@@ -12,5 +12,6 @@ import javafx.stage.Stage;
  * @author ob44f
  */
 public interface Startable {
+
     public void start(Stage stage);
 }
