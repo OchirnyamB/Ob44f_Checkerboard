@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Ob44f_Checkerboard.jar" size="6726" download="eager" />
+    <jar href="Ob44f_Checkerboard.jar" size="5784" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="com.javafx.main.NoJavaFXFallback"  name="Ob44f_Checkerboard" >
     <param name="requiredFXVersion" value="8.0+"/>
