@@ -10,7 +10,6 @@ import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Menu;
@@ -31,22 +30,20 @@ public class CheckerboardFXMLController implements Initializable, Startable {
     private VBox vBox;
 
     @FXML
-    private MenuBar menuBar;
-
-    @FXML
     private AnchorPane anchorPane;
-//    @FXML
-//    private AnchorPane anchorPane;
-//    @FXML 
-//    private MenuBar gridMenu;
-//    @FXML
-//    private MenuItem size1;
-//    @FXML
-//    private MenuItem size2;
-//    @FXML
-//    private MenuItem size3;
-//    @FXML
-//    private MenuItem size4;
+ 
+    @FXML
+    private MenuBar menuBar;
+    @FXML 
+    private Menu gridMenu;
+    @FXML
+    private MenuItem menu1;
+    @FXML
+    private MenuItem menu2;
+    @FXML
+    private MenuItem menu3;
+    @FXML
+    private MenuItem menu4;
 
     private Stage stage;
 
@@ -110,7 +107,18 @@ public class CheckerboardFXMLController implements Initializable, Startable {
 
     @FXML
     private void handleGridSize(ActionEvent event) {
-
+        gridMenu.getItems().forEach((size) -> {
+            size.setOnAction((ActionEvent event1) -> {
+                String boardDimension = size.getText();                     // Parse the submenus texts 16x16, 8x8
+                int index = boardDimension.indexOf("x");                    // to get the board square dimension
+                boardDimension = boardDimension.substring(0,index);
+                int dimension = Integer.parseInt(boardDimension);
+                numRows = dimension;
+                numCols = dimension;
+                displayBoard();
+            } // if one of the submenu is clicked set action
+            );
+        });
     }
 
     private void clearBoard() {

@@ -12,10 +12,10 @@
         <menus>
           <Menu fx:id="gridMenu" mnemonicParsing="false" onAction="#handleGridSize" text="Grid">
             <items>
-              <MenuItem mnemonicParsing="false" text="16x16" />
-                  <MenuItem mnemonicParsing="false" text="10x10" />
-                  <MenuItem mnemonicParsing="false" text="8x8" />
-                  <MenuItem mnemonicParsing="false" text="3x3" />
+              <MenuItem fx:id="menu1" mnemonicParsing="false" text="16x16" />
+                  <MenuItem fx:id="menu2" mnemonicParsing="false" text="10x10" />
+                  <MenuItem fx:id="menu3" mnemonicParsing="false" text="8x8" />
+                  <MenuItem fx:id="menu4" mnemonicParsing="false" text="3x3" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Colors">
