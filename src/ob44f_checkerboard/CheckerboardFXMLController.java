@@ -36,14 +36,6 @@ public class CheckerboardFXMLController implements Initializable, Startable {
     private MenuBar menuBar;
     @FXML 
     private Menu gridMenu;
-    @FXML
-    private MenuItem menu1;
-    @FXML
-    private MenuItem menu2;
-    @FXML
-    private MenuItem menu3;
-    @FXML
-    private MenuItem menu4;
 
     private Stage stage;
 
